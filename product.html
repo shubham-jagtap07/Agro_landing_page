@@ -1,0 +1,579 @@
+<!doctype html>
+<html lang="mr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>KAD Multiplier | उत्पादन माहिती - Product Details</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;600;700;800;900&family=Playfair+Display:wght@700;800;900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --green-dark: #0D3D22;
+      --green: #1A6B40;
+      --green-mid: #2E8B57;
+      --green-light: #4CAF72;
+      --green-pale: #E8F5EE;
+      --amber: #F59C21;
+      --amber-dark: #D4830E;
+      --amber-pale: #FFF4DC;
+      --soil: #6B4423;
+      --soil-light: #A0673A;
+      --cream: #FDFAF5;
+      --white: #FFFFFF;
+      --text: #0A2015;
+      --text-mid: #2D5040;
+      --text-muted: #5A7A68;
+      --border: #C8DDD0;
+      --border-light: #E0EDE6;
+      --shadow-green: rgba(26,107,64,.15);
+      --shadow-dark: rgba(10,32,21,.12);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', 'Noto Sans Devanagari', sans-serif;
+      color: var(--text);
+      background: var(--cream);
+      overflow-x: hidden;
+    }
+
+    /* ====== ANIMATIONS ====== */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(28px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes floatCard {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+    }
+
+    /* ====== LAYOUT ====== */
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+
+    /* ====== HEADER ====== */
+    .header {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(13,61,34,.97);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+    .header-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      height: 68px; gap: 16px;
+    }
+    .brand {
+      display: flex; align-items: center; gap: 10px;
+      font-weight: 800; font-size: 20px; color: #fff;
+    }
+    .brand-icon { font-size: 28px; }
+    nav { display: flex; gap: 4px; flex-wrap: wrap; }
+    nav a {
+      color: rgba(255,255,255,.8);
+      text-decoration: none;
+      font-size: 14px; font-weight: 500;
+      padding: 8px 14px; border-radius: 10px;
+      transition: .2s;
+    }
+    nav a:hover, nav a.active { 
+      background: rgba(255,255,255,.1); 
+      color: #fff; 
+    }
+    nav a.active { 
+      background: var(--green); 
+      color: #fff; 
+    }
+
+    /* ====== HERO ====== */
+    .hero {
+      background: linear-gradient(135deg, var(--green-dark) 0%, var(--green) 100%);
+      color: white;
+      padding: 80px 0 60px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="rgba(255,255,255,0.1)"/><circle cx="80" cy="40" r="1.5" fill="rgba(255,255,255,0.08)"/><circle cx="40" cy="70" r="1" fill="rgba(255,255,255,0.06)"/></svg>');
+      background-size: 200px;
+      animation: floatCard 20s ease-in-out infinite;
+    }
+    .hero-inner {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;
+      position: relative; z-index: 1;
+    }
+    .fade-up { animation: fadeUp 0.8s ease both; }
+    .delay-1 { animation-delay: .16s; }
+    .delay-2 { animation-delay: .32s; }
+    .delay-3 { animation-delay: .48s; }
+
+    .hero-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 42px; font-weight: 800; line-height: 1.2;
+      margin-bottom: 20px;
+    }
+    .accent { color: var(--amber); }
+    .hero-sub {
+      font-size: 17px; line-height: 1.6;
+      margin-bottom: 30px; opacity: 0.9;
+    }
+
+    /* ====== SECTIONS ====== */
+    .section {
+      padding: 80px 0;
+      position: relative;
+    }
+    .section:nth-child(even) { background: #fff; }
+    .section-label {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--green-pale); border: 1px solid var(--border);
+      padding: 6px 14px; border-radius: 20px;
+      font-size: 13px; font-weight: 700; color: var(--green);
+      margin-bottom: 16px;
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 36px; font-weight: 800; color: var(--green-dark);
+      margin-bottom: 20px;
+    }
+    .section-sub {
+      font-size: 17px; color: var(--text-muted);
+      margin-bottom: 40px; line-height: 1.6;
+    }
+
+    /* ====== PRODUCT CARDS ====== */
+    .products-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px; margin-top: 40px;
+    }
+    .product-card {
+      background: white;
+      border-radius: 20px;
+      padding: 30px;
+      box-shadow: 0 8px 32px var(--shadow-green);
+      border: 1px solid var(--border-light);
+      transition: transform .3s, box-shadow .3s;
+    }
+    .product-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 40px var(--shadow-green);
+    }
+    .product-icon {
+      width: 80px; height: 80px;
+      background: var(--green-pale);
+      border-radius: 16px;
+      display: grid; place-items: center;
+      font-size: 40px;
+      margin-bottom: 20px;
+    }
+    .product-name {
+      font-size: 22px; font-weight: 700; color: var(--green-dark);
+      margin-bottom: 10px;
+    }
+    .product-desc {
+      color: var(--text-muted); line-height: 1.6;
+      margin-bottom: 20px;
+    }
+    .product-specs {
+      background: var(--cream);
+      border-radius: 12px; padding: 16px;
+      margin-bottom: 20px;
+    }
+    .spec-row {
+      display: flex; justify-content: space-between;
+      padding: 8px 0; border-bottom: 1px solid var(--border-light);
+    }
+    .spec-row:last-child { border-bottom: none; }
+    .spec-label { font-weight: 600; color: var(--text-mid); }
+    .spec-value { font-weight: 700; color: var(--green); }
+
+    /* ====== BENEFITS ====== */
+    .benefits-list {
+      display: grid; gap: 16px; margin-top: 30px;
+    }
+    .benefit-item {
+      display: flex; gap: 16px; align-items: flex-start;
+      padding: 20px; background: white;
+      border-radius: 16px; box-shadow: 0 4px 16px var(--shadow-green);
+    }
+    .benefit-icon {
+      width: 50px; height: 50px;
+      background: var(--green-pale);
+      border-radius: 12px;
+      display: grid; place-items: center;
+      font-size: 24px; flex-shrink: 0;
+    }
+    .benefit-content h3 {
+      font-size: 18px; font-weight: 700; color: var(--green-dark);
+      margin-bottom: 8px;
+    }
+    .benefit-content p {
+      color: var(--text-muted); line-height: 1.5;
+    }
+
+    /* ====== TECH SPECS ====== */
+    .specs-table {
+      background: white;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 8px 32px var(--shadow-green);
+      margin-top: 30px;
+    }
+    .specs-table table {
+      width: 100%; border-collapse: collapse;
+    }
+    .specs-table th {
+      background: var(--green);
+      color: white;
+      padding: 16px; text-align: left;
+      font-weight: 700;
+    }
+    .specs-table td {
+      padding: 16px; border-bottom: 1px solid var(--border-light);
+    }
+    .specs-table tr:last-child td { border-bottom: none; }
+    .specs-table tr:nth-child(even) { background: var(--cream); }
+
+    /* ====== CTA ====== */
+    .cta {
+      background: linear-gradient(135deg, var(--amber), var(--amber-dark));
+      color: white;
+      padding: 16px 32px;
+      border-radius: 12px;
+      text-decoration: none;
+      font-weight: 700;
+      display: inline-flex; align-items: center; gap: 8px;
+      transition: transform .2s, box-shadow .2s;
+    }
+    .cta:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(245,156,33,.3);
+    }
+
+    /* ====== RESPONSIVE ====== */
+    @media (max-width: 768px) {
+      .hero-inner { grid-template-columns: 1fr; gap: 40px; }
+      .hero-title { font-size: 32px; }
+      .section-title { font-size: 28px; }
+      .header-inner { flex-wrap: wrap; height: auto; padding: 12px 0; }
+      nav { width: 100%; justify-content: center; margin-top: 8px; }
+      .section { padding: 60px 0; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header">
+  <div class="container header-inner">
+    <div class="brand">
+      <div class="brand-icon">🌿</div>
+      KAD Multiplier
+    </div>
+    <nav>
+      <a href="index.html">मुख्यपृष्ठ</a>
+      <a href="product.html" class="active">उत्पादन</a>
+      <a href="index.html#benefits">फायदे</a>
+      <a href="index.html#howtouse">वापर</a>
+      <a href="index.html#reviews">अनुभव</a>
+      <a href="index.html#lead">संपर्क</a>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container hero-inner">
+    <div class="fade-up">
+      <h1 class="hero-title">
+        KAD Multiplier<br>
+        <span class="accent">उत्पादन माहिती</span>
+      </h1>
+      <p class="hero-sub">
+        उच्च गुणवत्तेचे Humic Acid, Fulvic Acid आणि Bio-Stimulant उत्पादन. 
+        मातीची सेहत सुधारण्यासाठी आणि पिकांच्या वाढीसाठी नैसर्गिक उपाय.
+      </p>
+      <a href="#products" class="cta">उत्पादन पाहा ↓</a>
+    </div>
+    <div class="hero-visual fade-up delay-2">
+      <div style="background:rgba(255,255,255,.1); border:1px solid rgba(255,255,255,.2); border-radius:20px; padding:30px; text-align:center;">
+        <div style="font-size:80px; margin-bottom:20px;">🧪</div>
+        <div style="font-size:24px; font-weight:700; margin-bottom:10px;">KAD Multiplier</div>
+        <div style="font-size:16px; opacity:0.8;">Humic + Fulvic Acid Bio-Stimulant</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCT IMAGE -->
+<section class="section" style="background: #fff;">
+  <div class="container">
+    <div class="section-label">📦 उत्पादन पॅकेजिंग</div>
+    <h2 class="section-title">KAD Multiplier - असल्या पॅकेजिंगमध्ये उपलब्ध</h2>
+    <p class="section-sub">
+      आमचे उत्पादन उच्च गुणवत्तेचे पॅकेजिंगमध्ये उपलब्ध आहे. प्रत्येक पॅकेज मजबूत आणि सुरक्षित आहे.
+    </p>
+    
+    <div style="text-align: center; margin: 40px 0;">
+      <div style="display: inline-block; background: white; padding: 30px; border-radius: 20px; box-shadow: 0 10px 40px rgba(0,0,0,0.1); border: 1px solid var(--border-light);">
+        <img src="images/kad_multiplier_product.jpg" alt="KAD Multiplier Product Package" style="max-width: 100%; height: auto; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.1);">
+        <div style="margin-top: 20px; padding: 15px; background: var(--green-pale); border-radius: 10px;">
+          <h3 style="color: var(--green-dark); font-size: 20px; margin-bottom: 10px;">🌾 सर्व पिकांसाठी उत्तम</h3>
+          <p style="color: var(--text-muted); margin-bottom: 8px;">• मका, बाजरी, नाचणी, कापूस आणि अन्य पिके</p>
+          <p style="color: var(--text-muted); margin-bottom: 8px;">• 1 किलो, 5 किलो आणि 25 किलो पॅकेजिंग</p>
+          <p style="color: var(--text-muted);">• QR कोड द्वारे प्रमाणित उत्पादन</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section class="section" id="products">
+  <div class="container">
+    <div class="section-label">📦 उपलब्ध उत्पादने</div>
+    <h2 class="section-title">आपल्या गरजेनुसार निवडा</h2>
+    <p class="section-sub">
+      वेगवेगळ्या शेतीच्या गरजांसाठी आणि वापराच्या पद्धतींनुसार आम्ही तीन प्रकारचे उत्पादन देतो
+    </p>
+
+    <div class="products-grid">
+      <div class="product-card fade-up">
+        <div style="text-align: center; margin-bottom: 20px;">
+          <img src="images/WhatsApp Image 2026-03-05 at 10.21.46 AM.jpeg" alt="KAD Multiplier Granules" style="width: 100%; height: 200px; object-fit: cover; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+        </div>
+        <div class="product-icon">🌰</div>
+        <h3 class="product-name">Granules (WG)</h3>
+        <p class="product-desc">
+          मातीमध्ये मिसळण्यासाठी ग्रॅन्युल्स. सर्वात सोपा आणि प्रभावी पद्धतीसाठी.
+        </p>
+        <div class="product-specs">
+          <div class="spec-row">
+            <span class="spec-label">पॅकेजिंग</span>
+            <span class="spec-value">1 kg, 5 kg, 25 kg</span>
+          </div>
+          <div class="spec-row">
+            <span class="spec-label">वापर</span>
+            <span class="spec-value">माती द्वारे</span>
+          </div>
+          <div class="spec-row">
+            <span class="spec-label">मात्रा</span>
+            <span class="spec-value">1 kg/एकर/महिना</span>
+          </div>
+        </div>
+        <a href="#" class="cta">अधिक माहिती →</a>
+      </div>
+
+      <div class="product-card fade-up delay-1">
+        <div style="text-align: center; margin-bottom: 20px;">
+          <img src="images/WhatsApp Image 2026-03-05 at 10.21.46 AM.jpeg" alt="KAD Multiplier Powder" style="width: 100%; height: 200px; object-fit: cover; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+        </div>
+        <div class="product-icon">💨</div>
+        <h3 class="product-name">Powder (SP)</h3>
+        <p class="product-desc">
+          पावडर फॉर्म. पाण्यात लवकर विरघळते आणि फवारणीसाठी उत्तम.
+        </p>
+        <div class="product-specs">
+          <div class="spec-row">
+            <span class="spec-label">पॅकेजिंग</span>
+            <span class="spec-value">500 g, 1 kg, 5 kg</span>
+          </div>
+          <div class="spec-row">
+            <span class="spec-label">वापर</span>
+            <span class="spec-value">फवारणी + माती</span>
+          </div>
+          <div class="spec-row">
+            <span class="spec-label">मात्रा</span>
+            <span class="spec-value">1 g/लिटर पाणी</span>
+          </div>
+        </div>
+        <a href="#" class="cta">अधिक माहिती →</a>
+      </div>
+
+      <div class="product-card fade-up delay-2">
+        <div style="text-align: center; margin-bottom: 20px;">
+          <img src="images/WhatsApp Image 2026-03-05 at 10.21.46 AM.jpeg" alt="KAD Multiplier Liquid" style="width: 100%; height: 200px; object-fit: cover; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+        </div>
+        <div class="product-icon">💧</div>
+        <h3 class="product-name">Liquid</h3>
+        <p class="product-desc">
+          द्रवरूप उत्पादन. तात्काळ कार्यक्षमता आणि अचूक मोजणीसाठी.
+        </p>
+        <div class="product-specs">
+          <div class="spec-row">
+            <span class="spec-label">पॅकेजिंग</span>
+            <span class="spec-value">250 ml, 1 L, 5 L</span>
+          </div>
+          <div class="spec-row">
+            <span class="spec-label">वापर</span>
+            <span class="spec-value">फवारणी + ड्रिप</span>
+          </div>
+          <div class="spec-row">
+            <span class="spec-label">मात्रा</span>
+            <span class="spec-value">2-3 ml/लिटर पाणी</span>
+          </div>
+        </div>
+        <a href="#" class="cta">अधिक माहिती →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BENEFITS -->
+<section class="section">
+  <div class="container">
+    <div class="section-label">🌟 मुख्य फायदे</div>
+    <h2 class="section-title">KAD Multiplier चे वैशिष्ट्य</h2>
+    
+    <div class="benefits-list">
+      <div class="benefit-item fade-up">
+        <div class="benefit-icon">🌍</div>
+        <div class="benefit-content">
+          <h3>माती सुधारणा</h3>
+          <p>मातीची रचना सुधारते, organic carbon वाढवते आणि मातीला उत्पादक बनवते.</p>
+        </div>
+      </div>
+
+      <div class="benefit-item fade-up delay-1">
+        <div class="benefit-icon">⚡</div>
+        <div class="benefit-content">
+          <h3>पोषक तत्व उपलब्धता</h3>
+          <p>NPK आणि micro nutrients chelate करून मुळांपर्यंत पोहोचवते.</p>
+        </div>
+      </div>
+
+      <div class="benefit-item fade-up delay-2">
+        <div class="benefit-icon">🌱</div>
+        <div class="benefit-content">
+          <h3>मुळे मजबूत</h3>
+          <p>गहिरी आणि रेशेदार मूळ प्रणाली विकसित करते.</p>
+        </div>
+      </div>
+
+      <div class="benefit-item fade-up">
+        <div class="benefit-icon">🛡️</div>
+        <div class="benefit-content">
+          <h3>स्ट्रेस रेझिस्टन्स</h3>
+          <p>दुष्काळ, लवणीयता आणि तापमान बदलाशी लढते.</p>
+        </div>
+      </div>
+
+      <div class="benefit-item fade-up delay-1">
+        <div class="benefit-icon">🌾</div>
+        <div class="benefit-content">
+          <h3>उत्पादन वाढ</h3>
+          <p>फळ सेट सुधारते, yield आणि quality वाढवते.</p>
+        </div>
+      </div>
+
+      <div class="benefit-item fade-up delay-2">
+        <div class="benefit-icon">✅</div>
+        <div class="benefit-content">
+          <h3>100% सुरक्षित</h3>
+          <p>माती, पाणी आणि पर्यावरणासाठी पूर्णपणे सुरक्षित.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ADDITIONAL PRODUCT IMAGES -->
+<section class="section" style="background: var(--cream);">
+  <div class="container">
+    <div class="section-label">📸 उत्पादन गॅलरी</div>
+    <h2 class="section-title">अधिक उत्पादन प्रतिमा</h2>
+    <p class="section-sub">
+      KAD Multiplier च्या वेगवेगळ्या पॅकेजिंग आणि वापराच्या पद्धतींचा आलेख
+    </p>
+    
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 40px;">
+      <div style="background: white; padding: 20px; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.1); text-align: center;">
+        <img src="images/WhatsApp Image 2026-03-05 at 10.21.46 AM.jpeg" alt="KAD Multiplier Additional View" style="width: 100%; height: auto; border-radius: 10px; margin-bottom: 15px;">
+        <h3 style="color: var(--green-dark); font-size: 18px; margin-bottom: 8px;">KAD Multiplier पॅकेजिंग</h3>
+        <p style="color: var(--text-muted); font-size: 14px;">उच्च गुणवत्तेचे पॅकेजिंग आणि QR कोड सह प्रमाणित</p>
+      </div>
+      
+      <div style="background: white; padding: 20px; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.1); text-align: center;">
+        <div style="background: var(--green-pale); border-radius: 10px; padding: 40px; margin-bottom: 15px;">
+          <div style="font-size: 60px; margin-bottom: 10px;">🌾</div>
+          <div style="font-size: 16px; font-weight: 600; color: var(--green-dark);">उत्पादन वाढ</div>
+        </div>
+        <h3 style="color: var(--green-dark); font-size: 18px; margin-bottom: 8px;">चांगले परिणाम</h3>
+        <p style="color: var(--text-muted); font-size: 14px;">माती सुधारणा आणि पिकांच्या वाढीत सुधारणा</p>
+      </div>
+      
+      <div style="background: white; padding: 20px; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.1); text-align: center;">
+        <div style="background: linear-gradient(135deg, var(--green), var(--green-mid)); border-radius: 10px; padding: 40px; margin-bottom: 15px;">
+          <div style="font-size: 60px; margin-bottom: 10px;">🌱</div>
+          <div style="font-size: 16px; font-weight: 600; color: white;">१००% जैविक</div>
+        </div>
+        <h3 style="color: var(--green-dark); font-size: 18px; margin-bottom: 8px;">नैसर्गिक उत्पादन</h3>
+        <p style="color: var(--text-muted); font-size: 14px;">रासायनिक रहित, पर्यावरणास हानिकारक नाही</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TECHNICAL SPECS -->
+<section class="section">
+  <div class="container">
+    <div class="section-label">🔬 तांत्रिक माहिती</div>
+    <h2 class="section-title">उत्पादन तपशील</h2>
+    
+    <div class="specs-table">
+      <table>
+        <thead>
+          <tr>
+            <th>घटक</th>
+            <th>मूल्य (%)</th>
+            <th>फायदा</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Humic Acid</strong></td>
+            <td>15-20%</td>
+            <td>माती सुधारणा, पोषण शोषण</td>
+          </tr>
+          <tr>
+            <td><strong>Fulvic Acid</strong></td>
+            <td>8-12%</td>
+            <td>रेझिस्टन्स, growth promoter</td>
+          </tr>
+          <tr>
+            <td><strong>Potassium (K)</strong></td>
+            <td>5-8%</td>
+            <td>पिक वाढ, फळ सेट</td>
+          </tr>
+          <tr>
+            <td><strong>Organic Carbon</strong></td>
+            <td>25-30%</td>
+            <td>मातीची सेहत</td>
+          </tr>
+          <tr>
+            <td><strong>pH</strong></td>
+            <td>6.5-8.0</td>
+            <td>माती अनुकूल</td>
+          </tr>
+          <tr>
+            <td><strong>घनता</strong></td>
+            <td>1.2-1.4 g/cm³</td>
+            <td>सोपा वापर</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div style="text-align: center; margin-top: 40px;">
+      <a href="index.html#lead" class="cta">ऑर्डर करण्यासाठी संपर्क →</a>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>

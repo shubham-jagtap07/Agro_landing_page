@@ -1,0 +1,474 @@
+<!doctype html>
+<html lang="hi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>DiaboCare | Natural Diabetes Care Products</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .header h1 {
+      font-size: 2.5rem;
+      color: #2c3e50;
+      margin-bottom: 10px;
+      font-weight: 700;
+    }
+
+    .header p {
+      font-size: 1.1rem;
+      color: #7f8c8d;
+    }
+
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 30px;
+      margin-bottom: 40px;
+    }
+
+    .product-card {
+      background: white;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      position: relative;
+    }
+
+    .product-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+    }
+
+    .product-header {
+      position: relative;
+      padding: 15px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    }
+
+    .brand-logo {
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      background: white;
+      color: #667eea;
+      padding: 5px 10px;
+      border-radius: 5px;
+      font-weight: 700;
+      font-size: 0.8rem;
+    }
+
+    .product-actions {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      display: flex;
+      gap: 10px;
+    }
+
+    .action-btn {
+      width: 35px;
+      height: 35px;
+      border-radius: 50%;
+      background: white;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      transition: all 0.3s ease;
+    }
+
+    .action-btn:hover {
+      background: #ff6b6b;
+      color: white;
+      transform: scale(1.1);
+    }
+
+    .product-image {
+      width: 100%;
+      height: 250px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: white;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .product-image img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+    }
+
+    .badge {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background: #ff6b6b;
+      color: white;
+      padding: 5px 12px;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      z-index: 1;
+    }
+
+    .badge.top-selling {
+      background: #4ecdc4;
+    }
+
+    .badge.most-popular {
+      background: #f39c12;
+    }
+
+    .product-content {
+      padding: 20px;
+    }
+
+    .product-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #2c3e50;
+      margin-bottom: 8px;
+    }
+
+    .product-description {
+      color: #7f8c8d;
+      font-size: 0.95rem;
+      margin-bottom: 15px;
+    }
+
+    .hindi-text {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 15px;
+      border-radius: 10px;
+      margin-bottom: 15px;
+      text-align: center;
+    }
+
+    .hindi-text .main-text {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 5px;
+    }
+
+    .hindi-text .sub-text {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .price-section {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 15px;
+    }
+
+    .current-price {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #27ae60;
+    }
+
+    .original-price {
+      font-size: 1.2rem;
+      color: #95a5a6;
+      text-decoration: line-through;
+    }
+
+    .discount-badge {
+      background: #e74c3c;
+      color: white;
+      padding: 3px 8px;
+      border-radius: 5px;
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+
+    .rating {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+
+    .stars {
+      color: #f39c12;
+      font-size: 1.1rem;
+    }
+
+    .rating-text {
+      color: #7f8c8d;
+      font-size: 0.9rem;
+    }
+
+    .buy-btn {
+      width: 100%;
+      padding: 15px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .buy-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+    }
+
+    .contact-info {
+      background: white;
+      padding: 20px;
+      border-radius: 15px;
+      text-align: center;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    }
+
+    .contact-info h3 {
+      color: #2c3e50;
+      margin-bottom: 10px;
+      font-size: 1.3rem;
+    }
+
+    .contact-info p {
+      color: #7f8c8d;
+      margin-bottom: 5px;
+    }
+
+    .contact-info .phone {
+      color: #27ae60;
+      font-weight: 600;
+    }
+
+    .contact-info .website {
+      color: #667eea;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .contact-info .website:hover {
+      text-decoration: underline;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .products-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+      
+      .header h1 {
+        font-size: 2rem;
+      }
+      
+      .product-title {
+        font-size: 1.3rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      body {
+        padding: 10px;
+      }
+      
+      .products-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .product-content {
+        padding: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <div class="header">
+    <h1>DiaboCare Products</h1>
+    <p>Natural Ayurvedic Solutions for Diabetes Care</p>
+  </div>
+
+  <div class="products-grid">
+    <!-- Product 1: DiaboCare Syrup -->
+    <div class="product-card">
+      <div class="product-header">
+        <div class="brand-logo">Prav</div>
+        <div class="product-actions">
+          <button class="action-btn">❤️</button>
+          <button class="action-btn">👁️</button>
+        </div>
+      </div>
+      
+      <div class="product-image">
+        <div class="badge">FAST ACTING</div>
+        <div class="badge" style="top: 50px; left: 10px; background: #e74c3c;">10% OFF</div>
+        <div style="text-align: center; width: 100%;">
+          <div style="font-size: 120px; margin-bottom: 10px;">🧪</div>
+          <div style="display: flex; justify-content: center; gap: 10px; font-size: 30px;">
+            <span>🥒</span>
+            <span>🍇</span>
+            <span>🍃</span>
+          </div>
+        </div>
+      </div>
+      
+      <div class="product-content">
+        <h2 class="product-title">DiaboCare Syrup</h2>
+        <p class="product-description">Natural blood sugar support</p>
+        
+        <div class="hindi-text">
+          <div class="main-text">धुमेह के लिए रामबाण उपाय</div>
+          <div class="sub-text">प्राकृतिक जड़ी-बूटियों से निर्मित</div>
+        </div>
+        
+        <div class="price-section">
+          <span class="current-price">₹810</span>
+          <span class="original-price">₹899</span>
+          <span class="discount-badge">10% OFF</span>
+        </div>
+        
+        <div class="rating">
+          <span class="stars">⭐⭐⭐⭐⭐</span>
+          <span class="rating-text">4.8 (324 reviews)</span>
+        </div>
+        
+        <button class="buy-btn">BUY NOW</button>
+      </div>
+    </div>
+
+    <!-- Product 2: DiaboCare Capsule -->
+    <div class="product-card">
+      <div class="product-header">
+        <div class="brand-logo">Prav</div>
+        <div class="product-actions">
+          <button class="action-btn">❤️</button>
+          <button class="action-btn">👁️</button>
+        </div>
+      </div>
+      
+      <div class="product-image">
+        <div class="badge top-selling">TOP SELLING</div>
+        <div class="badge" style="top: 50px; left: 10px; background: #27ae60;">TRAVEL FRIENDLY</div>
+        <div style="text-align: center; width: 100%;">
+          <div style="font-size: 120px; margin-bottom: 10px;">💊</div>
+          <div style="display: flex; justify-content: center; gap: 10px; font-size: 30px;">
+            <span>🍃</span>
+            <span>🌿</span>
+            <span>🍀</span>
+          </div>
+        </div>
+      </div>
+      
+      <div class="product-content">
+        <h2 class="product-title">DiaboCare Capsule</h2>
+        <p class="product-description">Convenient herbal formulation</p>
+        
+        <div class="hindi-text">
+          <div class="main-text">सुविधाजनक कैप्सूल फॉर्मूला</div>
+          <div class="sub-text">जड़ी-बूटियों का शक्तिशाली मिश्रण</div>
+        </div>
+        
+        <div class="price-section">
+          <span class="current-price">₹540</span>
+        </div>
+        
+        <div class="rating">
+          <span class="stars">⭐⭐⭐⭐⭐</span>
+          <span class="rating-text">4.7 (256 reviews)</span>
+        </div>
+        
+        <button class="buy-btn">BUY NOW</button>
+      </div>
+    </div>
+
+    <!-- Product 3: Pravara Monthly Care Kit -->
+    <div class="product-card">
+      <div class="product-header">
+        <div class="brand-logo">Prav</div>
+        <div class="product-actions">
+          <button class="action-btn">❤️</button>
+          <button class="action-btn">👁️</button>
+        </div>
+      </div>
+      
+      <div class="product-image">
+        <div class="badge most-popular">MOST POPULAR</div>
+        <div class="badge" style="top: 50px; left: 10px; background: #e74c3c;">6% OFF</div>
+        <div style="text-align: center; width: 100%;">
+          <div style="display: flex; justify-content: center; align-items: center; gap: 20px; font-size: 80px;">
+            <span>🧪</span>
+            <span style="font-size: 40px; color: #667eea;">+</span>
+            <span>💊</span>
+          </div>
+          <div style="font-size: 30px; margin-top: 10px;">🎁</div>
+        </div>
+      </div>
+      
+      <div class="product-content">
+        <h2 class="product-title">Pravara Monthly Care Kit</h2>
+        <p class="product-description">1 Syrup + 60 Capsules + Free Knee Patch</p>
+        
+        <div class="hindi-text">
+          <div class="main-text">आयुर्वेदिक शुगर रक्षक</div>
+          <div class="sub-text">Ayurvedic Combination Therapy</div>
+        </div>
+        
+        <div class="price-section">
+          <span class="current-price">₹1,350</span>
+          <span class="original-price">₹1,439</span>
+          <span class="discount-badge">6% OFF</span>
+        </div>
+        
+        <div class="rating">
+          <span class="stars">⭐⭐⭐⭐⭐</span>
+          <span class="rating-text">4.8 (189 reviews)</span>
+        </div>
+        
+        <button class="buy-btn">BUY NOW</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="contact-info">
+    <h3>Order Now!</h3>
+    <p>Call: <span class="phone">+91 93739 86362</span></p>
+    <p>Visit: <a href="http://www.pravarahealthcare.com" class="website" target="_blank">www.pravarahealthcare.com</a></p>
+  </div>
+</div>
+
+</body>
+</html>
