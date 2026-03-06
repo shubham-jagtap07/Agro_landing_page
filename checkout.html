@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KAD Multiplier Checkout</title>
+
+<style>
+    .payment-title{
+margin-bottom:15px;
+font-size:18px;
+}
+
+.payment-methods{
+display:flex;
+flex-direction:column;
+gap:15px;
+}
+
+.payment-card{
+display:block;
+cursor:pointer;
+}
+
+.payment-card input{
+display:none;
+}
+
+.payment-content{
+display:flex;
+justify-content:space-between;
+align-items:center;
+border:2px solid #e5e5e5;
+border-radius:12px;
+padding:16px;
+transition:0.3s;
+background:white;
+}
+
+.payment-left{
+display:flex;
+gap:12px;
+align-items:center;
+font-size:20px;
+}
+
+.payment-name{
+font-weight:bold;
+font-size:15px;
+}
+
+.payment-desc{
+font-size:12px;
+color:#777;
+}
+
+.payment-right{
+background:#2f855a;
+color:white;
+padding:4px 10px;
+border-radius:6px;
+font-size:11px;
+}
+
+.payment-card input:checked + .payment-content{
+border-color:#2f855a;
+background:#f0fff4;
+box-shadow:0 4px 10px rgba(0,0,0,0.08);
+}
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial;
+}
+
+/* BODY */
+
+body{
+background:#f5f5f5;
+}
+
+/* HEADER */
+
+.header{
+position:sticky;
+top:0;
+background:#0D3D22;
+color:white;
+z-index:100;
+}
+
+.container{
+max-width:1100px;
+margin:auto;
+padding:0 20px;
+}
+
+.header-inner{
+display:flex;
+align-items:center;
+justify-content:space-between;
+height:70px;
+}
+
+.brand{
+display:flex;
+align-items:center;
+gap:10px;
+color:#F59C21;
+font-weight:800;
+font-size:20px;
+}
+
+nav{
+display:flex;
+gap:20px;
+}
+
+nav a{
+color:white;
+text-decoration:none;
+font-size:14px;
+}
+
+.header-btns{
+display:flex;
+gap:10px;
+}
+
+.btn{
+padding:8px 14px;
+border-radius:8px;
+text-decoration:none;
+font-size:14px;
+}
+
+.btn-outline{
+border:1px solid white;
+color:white;
+}
+
+.btn-amber{
+background:#F59C21;
+color:black;
+}
+
+/* CHECKOUT */
+
+.checkout-container{
+max-width:1100px;
+margin:auto;
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:40px;
+padding:40px 20px;
+}
+
+.box{
+background:white;
+padding:30px;
+border-radius:20px;
+box-shadow:0 10px 30px rgba(0,0,0,0.1);
+}
+
+input{
+width:100%;
+padding:12px;
+margin-bottom:12px;
+border-radius:8px;
+border:1px solid #ddd;
+}
+
+.row{
+display:flex;
+gap:10px;
+}
+
+.payment-option{
+border:1px solid #ddd;
+padding:15px;
+border-radius:12px;
+margin-top:10px;
+cursor:pointer;
+display:flex;
+align-items:center;
+gap:10px;
+}
+
+.payment-option:hover{
+border-color:#2f855a;
+background:#f0fff4;
+}
+
+/* PRODUCT */
+
+.product{
+display:flex;
+gap:15px;
+align-items:center;
+margin-bottom:20px;
+}
+
+.product img{
+width:70px;
+border-radius:10px;
+}
+
+.qty-box{
+display:flex;
+align-items:center;
+gap:10px;
+}
+
+.qty-btn{
+width:30px;
+height:30px;
+border:none;
+background:#eee;
+border-radius:6px;
+cursor:pointer;
+font-size:18px;
+}
+
+.summary-line{
+display:flex;
+justify-content:space-between;
+margin:10px 0;
+}
+
+.total{
+font-size:20px;
+font-weight:bold;
+}
+
+.place{
+width:100%;
+padding:16px;
+background:#5a3e1b;
+color:white;
+border:none;
+border-radius:40px;
+font-size:16px;
+cursor:pointer;
+margin-top:20px;
+}
+
+/* FOOTER */
+
+footer{
+background:#061510;
+color:white;
+padding:40px 0;
+margin-top:60px;
+}
+
+.footer-inner{
+display:flex;
+justify-content:space-between;
+flex-wrap:wrap;
+gap:20px;
+}
+
+.footer-brand{
+font-size:20px;
+font-weight:bold;
+color:#F59C21;
+}
+
+.footer-copy{
+margin-top:20px;
+border-top:1px solid rgba(255,255,255,0.1);
+padding-top:10px;
+font-size:13px;
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+.checkout-container{
+grid-template-columns:1fr;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+
+<header class="header">
+<div class="container header-inner">
+
+<div class="brand">🌿 KAD Multiplier</div>
+
+<nav>
+<a href="index.html">होम</a>
+<a href="product.html">उत्पादन</a>
+<a href="#">फायदे</a>
+<a href="#">वापर</a>
+<a href="#">अनुभव</a>
+</nav>
+
+<div class="header-btns">
+<a class="btn btn-outline" href="#">📞 Call</a>
+<a class="btn btn-amber" href="#">💬 WhatsApp</a>
+</div>
+
+</div>
+</header>
+
+<!-- CHECKOUT -->
+
+<div class="checkout-container">
+
+<!-- SHIPPING -->
+
+<div class="box">
+
+<h2>Shipping Details</h2>
+
+<input placeholder="Full Name">
+<input placeholder="10-digit Phone">
+<input placeholder="Address">
+
+<div class="row">
+<input placeholder="City">
+<input placeholder="PIN Code">
+</div>
+
+   <h3 class="payment-title">Payment Method</h3>
+
+<div class="payment-methods">
+
+<label class="payment-card">
+
+<input type="radio" name="payment" value="online" checked>
+
+<div class="payment-content">
+
+<div class="payment-left">
+💳
+<div>
+<div class="payment-name">Pay Online</div>
+<div class="payment-desc">UPI / Card / Net Banking</div>
+</div>
+</div>
+
+<div class="payment-right">
+Recommended
+</div>
+
+</div>
+
+</label>
+
+
+<label class="payment-card">
+
+<input type="radio" name="payment" value="cod">
+
+<div class="payment-content">
+
+<div class="payment-left">
+📦
+<div>
+<div class="payment-name">Cash on Delivery</div>
+<div class="payment-desc">Pay when product arrives</div>
+</div>
+</div>
+
+</div>
+
+</label>
+
+</div>
+
+
+
+</div>
+
+<!-- SUMMARY -->
+
+<div class="box">
+
+<h2>Order Summary</h2>
+
+<div class="product">
+
+<img id="productImage">
+
+<div>
+
+<div id="productName"></div>
+
+<div class="qty-box">
+
+<button class="qty-btn" onclick="decrease()">-</button>
+
+<div id="qty">1</div>
+
+<button class="qty-btn" onclick="increase()">+</button>
+
+</div>
+
+</div>
+
+<div style="margin-left:auto;font-weight:bold" id="productPrice"></div>
+
+</div>
+
+<hr>
+
+<div class="summary-line">
+<span>Subtotal</span>
+<span id="subtotal"></span>
+</div>
+
+<div class="summary-line">
+<span>Shipping</span>
+<span>Free</span>
+</div>
+
+<div class="summary-line total">
+<span>Total</span>
+<span id="total"></span>
+</div>
+
+<button class="place">Place Order</button>
+
+</div>
+
+</div>
+
+<!-- FOOTER -->
+
+<footer>
+<div class="container">
+
+<div class="footer-inner">
+
+<div>
+<div class="footer-brand">🌿 KAD Multiplier</div>
+<div>Soil Health • Root Growth • Better Yield</div>
+<div style="margin-top:10px;">Humic + Fulvic Acid Bio-Stimulant</div>
+</div>
+
+<div>
+<div>📞 Contact</div>
+<div style="font-size:18px;font-weight:bold;">+91 XXXXX XXXXX</div>
+</div>
+
+</div>
+
+<div class="footer-copy">
+© 2026 KAD Multiplier. All rights reserved.
+</div>
+
+</div>
+</footer>
+
+<script>
+
+const params=new URLSearchParams(window.location.search);
+const product=params.get("product");
+
+const products={
+granules:{name:"KAD Multiplier Granules",price:810,image:"images/WhatsApp Image 2026-03-05 at 10.21.46 AM.jpeg"},
+powder:{name:"KAD Multiplier Powder",price:620,image:"images/WhatsApp Image 2026-03-05 at 10.21.46 AM.jpeg"},
+liquid:{name:"KAD Multiplier Liquid",price:950,image:"images/WhatsApp Image 2026-03-05 at 10.21.46 AM.jpeg"}
+}
+
+const p=products[product]||products.granules;
+
+let quantity=1;
+
+document.getElementById("productName").innerText=p.name;
+document.getElementById("productImage").src=p.image;
+
+updatePrice();
+
+function updatePrice(){
+
+let total=p.price*quantity;
+
+document.getElementById("productPrice").innerText="₹"+total;
+document.getElementById("subtotal").innerText="₹"+total;
+document.getElementById("total").innerText="₹"+total;
+document.getElementById("qty").innerText=quantity;
+
+}
+
+function increase(){quantity++;updatePrice();}
+function decrease(){if(quantity>1){quantity--;updatePrice();}}
+
+</script>
+
+</body>
+</html>
