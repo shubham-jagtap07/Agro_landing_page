@@ -663,7 +663,7 @@
       <a href="#howtouse">वापर</a>
       <a href="#results">Results</a>
       <a href="#reviews">अनुभव</a>
-      <a href="#lead">संपर्क</a>
+      <!-- <a href="#lead">संपर्क</a> -->
     </nav>
     <!-- <div class="header-btns">
       <a class="btn btn-outline" href="tel:+91XXXXXXXXXX">📞 Call</a>
@@ -870,7 +870,6 @@ Coming Soon
         <div style="font-size: 14px; color: var(--text-muted); margin-bottom: 20px;">
           रासायनिक रहित, पर्यावरणास अनुकूल आणि पिकांच्या आरोग्यासाठी उत्तम
         </div>
-        <a href="product.html" style="display: inline-block; padding: 16px 32px; background: linear-gradient(135deg, var(--green), var(--amber)); color: white; text-decoration: none; border-radius: 25px; font-weight: 700; font-size: 16px; box-shadow: 0 6px 20px rgba(26,107,64,0.3); transition: all 0.3s ease;">सर्व उत्पादने पाहा →</a>
       </div>
     </div>
   </div>
@@ -1163,6 +1162,29 @@ Coming Soon
 
 <script>
   // Intersection observer for fade-up animations
+ document.addEventListener("contextmenu", function(e){
+e.preventDefault();
+});
+document.onkeydown=function(e){
+
+if(e.keyCode==123){
+return false;
+}
+
+if(e.ctrlKey && e.shiftKey && e.keyCode==73){
+return false;
+}
+
+if(e.ctrlKey && e.shiftKey && e.keyCode==74){
+return false;
+}
+
+if(e.ctrlKey && e.keyCode==85){
+return false;
+}
+
+}
+
   const obs = new IntersectionObserver(entries => {
     entries.forEach(e => {
       if (e.isIntersecting) { e.target.style.animationPlayState = 'running'; obs.unobserve(e.target); }
