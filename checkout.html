@@ -300,16 +300,16 @@ grid-template-columns:1fr;
 
 <nav>
 <a href="index.html">होम</a>
-<a href="product.html">उत्पादन</a>
-<a href="#">फायदे</a>
-<a href="#">वापर</a>
-<a href="#">अनुभव</a>
+<a href="index.html">उत्पादन</a>
+<a href="#benefits">फायदे</a>
+      <a href="#howtouse">वापर</a>
+      <a href="#reviews">अनुभव</a>
 </nav>
 
-<div class="header-btns">
+<!-- <div class="header-btns">
 <a class="btn btn-outline" href="#">📞 Call</a>
 <a class="btn btn-amber" href="#">💬 WhatsApp</a>
-</div>
+</div> -->
 
 </div>
 </header>
@@ -451,9 +451,9 @@ Recommended
 </div>
 
 <div>
-<div>📞 Contact</div>
+<!-- <div>📞 Contact</div>
 <div style="font-size:18px;font-weight:bold;">+91 XXXXX XXXXX</div>
-</div>
+</div> -->
 
 </div>
 
@@ -466,14 +466,30 @@ Recommended
 
 <script>
 
-const params=new URLSearchParams(window.location.search);
-const product=params.get("product");
+const params = new URLSearchParams(window.location.search);
+const product = params.get("product");
 
-const products={
-granules:{name:"KAD Multiplier Granules",price:810,image:"images/WhatsApp Image 2026-03-05 at 10.21.46 AM.jpeg"},
-powder:{name:"KAD Multiplier Powder",price:620,image:"images/WhatsApp Image 2026-03-05 at 10.21.46 AM.jpeg"},
-liquid:{name:"KAD Multiplier Liquid",price:950,image:"images/WhatsApp Image 2026-03-05 at 10.21.46 AM.jpeg"}
+const products = {
+
+granules:{
+name:"KAD Multiplier Granules (WG)",
+price:450,
+image:"images/WhatsApp Image 2026-03-05 at 10.21.46 AM.jpeg"
+},
+
+powder:{
+name:"KAD Multiplier Powder (Coming Soon)",
+price:0,
+image:"images/WhatsApp Image 2026-03-05 at 10.21.46 AM.jpeg"
+},
+
+liquid:{
+name:"KAD Multiplier Liquid (Coming Soon)",
+price:0,
+image:"images/WhatsApp Image 2026-03-05 at 10.21.46 AM.jpeg"
 }
+
+};
 
 const p=products[product]||products.granules;
 
